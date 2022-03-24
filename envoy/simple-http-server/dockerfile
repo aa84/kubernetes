@@ -1,0 +1,14 @@
+FROM golang:1.17.8 AS builder
+COPY src /src
+WORKDIR /src
+ENV CGO_ENABLED=0
+RUN go build -o /server
+
+
+FROM alpine
+EXPOSE 8080
+CMD ["server.exe"]
+
+WORKDIR /usr/bin
+COPY --from=builder /server ./server.exe
+RUN chmod +x server.exe
