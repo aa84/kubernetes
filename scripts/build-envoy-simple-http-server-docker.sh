@@ -1,0 +1,1 @@
+docker build -t simple-http-server -f ../envoy/simple-http-server/dockerfile ../envoy/simple-http-server
